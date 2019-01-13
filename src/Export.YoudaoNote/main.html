@@ -1,10 +1,28 @@
-
+<!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>笔记迁移</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+    <!-- 引入样式 element-ui -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.4.11/lib/theme-chalk/index.css"> 
+    <!-- 引入组件库 element-ui -->
+    <script src="https://unpkg.com/element-ui@2.4.11/lib/index.js"></script>
+
+</head>
 <body>
-
-    <h1>fff</h1>
-
+    <div id="app">
+        {{ message }} 
+        <hr />
+        <el-checkbox v-for="folder in rootFolder">{{ folder.name }}</el-checkbox> 
+    </div> 
 </body>
+
+<script src="main.js"></script>
 
 </html>
