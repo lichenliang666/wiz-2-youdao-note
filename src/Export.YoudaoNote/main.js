@@ -54,10 +54,8 @@ var rootFolder = folderCollectionToFolderArray(objDatabase.Folders);
 
 var app = new Vue({
     el: '#app',
-    data: {
-        message: 'Hello Vue!'
-        ,
-        rootFolder: rootFolder
+    data: { 
+        rootFolder: rootFolder  
     }
 })
  
