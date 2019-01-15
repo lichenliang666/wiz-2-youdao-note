@@ -16,12 +16,36 @@
 
 </head>
 <body>
-    <div id="app">
-        {{ message }} 
-        <hr />
-        <el-checkbox v-for="folder in rootFolder">{{ folder.name }}</el-checkbox> 
+    <div id="app">  
+        <el-row type="flex" class="row-bg" justify="center" align="middle">
+            <el-col :span="16"> 
+                <el-card class="box-card">
+                    <div slot="header" class="clearfix">
+                        <span>笔记迁移到有道笔记</span> 
+                    </div> 
+                    <el-form ref="form" :model="form" label-width="80px">
+                        <el-form-item label="笔记目录"> 
+                            <el-select v-model="form.region" placeholder="请选择笔记目录">
+                                <el-option v-for="folder in rootFolder" :key="folder.name" :label="folder.name" :value="folder.name"></el-option> 
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" @click="onSubmit">立即迁移</el-button>
+                            <el-button>取消</el-button>
+                        </el-form-item>
+                    </el-form> 
+                </el-card> 
+            </el-col> 
+        </el-row> 
     </div> 
 </body>
+
+<style> 
+    .grid-content {
+      border-radius: 4px;
+      min-height: 36px;
+    } 
+</style>
 
 <script src="main.js"></script>
 
