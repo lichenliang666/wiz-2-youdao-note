@@ -32,12 +32,12 @@ var objFolderCollection = objDatabase.Folders;
 function folderCollectionToFolderArray(folderCollection) {
     let folders = [];
     for (let index = 0; index < folderCollection.Count; index++) { 
-        let tempFolder = folderCollection.Item(index); 
-        console.log(tempFolder);
+        let tempFolder = folderCollection.Item(index);  
         let folder = {};
+        folder.index = index;
         folder.name = tempFolder.Name;
-        folder.location = tempFolder.Location;
-        console.log(folder);
+        folder.guid = tempFolder.GUID;
+        folder.location = tempFolder.Location; 
         folders.push(folder);
     }
     return folders;
@@ -52,11 +52,39 @@ function folderCollectionToFolderArray(folderCollection) {
 
 var rootFolder = folderCollectionToFolderArray(objDatabase.Folders);
 
+var test;
+
 var app = new Vue({
     el: '#app',
     data: { 
         rootFolder: rootFolder ,
-        value: ''
-    }
+        rootFolderIndex: ''
+    },
+    methods: {
+        save() { 
+            // 获得选择的文件夹
+            const selectFolder = objFolderCollection.Item(this.rootFolderIndex);
+            // 获得此目录下的所有文档
+            const selectFolderDocuments = selectFolder.Documents;
+            for (let i = 0; i < selectFolderDocuments.Count; i++) {
+
+                const document = selectFolderDocuments.Item(i); 
+                  
+                console.log('----------------');
+                console.log(document.GUID);
+                console.log(document.Title);
+                console.log(document.Author);
+                console.log(document.Type); 
+                console.log(document.GetHtml());    
+                console.log(document.GetText(0x01)); 
+                test = document;
+
+                if(i > 5)
+                    break 
+
+            }
+ 
+        }
+    },
 })
  
